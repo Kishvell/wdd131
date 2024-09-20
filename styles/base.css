@@ -1,0 +1,147 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    margin-bottom: 1rem;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  header {
+    background-color: #282c34;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav li {
+    display: inline-block;
+  }
+  
+  nav a {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  nav a:hover {
+    background-color: #0056b3;
+  }
+
+.card {
+    margin-bottom: 2rem;
+  }
+  
+  .card h2 {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .card h3 {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    border-bottom: 2px solid #333;
+    width: 80%;
+    margin: 20px auto;
+  }
+
+  .content-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .content-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .content-row img {
+    width: 200px;
+    height: auto;
+    border-radius: 5px;
+    max-height: 200px;
+  }
+  
+  .about-me {
+    background-color: #f5f5f5;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .web-dev-resources {
+    background-color: #f5f5f5;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .author {
+    color: yellow; /* Set the text color to yellow */
+    font-weight: bold;
+    margin-left: 10px; /* Add some space between the h1 and the author's name */
+  }  
+
+  .header-content {
+    display: flex; /* Enable flexbox layout */
+    align-items: center; /* Vertically align items */
+    justify-content: center; /* Center the content horizontally */
+  }  
+
+  footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #282c34;
+    color: #fff;
+  }
+  
+  @media (max-width: 768px) {
+    .card {
+      grid-template-columns: 1fr;
+    }
+  }
