@@ -121,16 +121,25 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
+  .web-dev-resources p a {
+    text-align: center;
+    display: flex;
+    margin-bottom: 5px;
+    list-style-type: disc;
+    margin-left: 20px;
+    line-height: 1.5;
+  }
+
   .author {
-    color: yellow; /* Set the text color to yellow */
+    color: yellow;
     font-weight: bold;
-    margin-left: 10px; /* Add some space between the h1 and the author's name */
+    margin-left: 10px;
   }  
 
   .header-content {
-    display: flex; /* Enable flexbox layout */
-    align-items: center; /* Vertically align items */
-    justify-content: center; /* Center the content horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }  
 
   footer {
