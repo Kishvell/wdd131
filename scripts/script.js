@@ -1,5 +1,3 @@
-// script.js
-
 // Get the elements where we'll display the windchill
 const windChillElement = document.getElementById('windchill');
 
@@ -26,3 +24,6 @@ const footer = document.querySelector('footer');
 const currentYear = new Date().getFullYear();
 const lastModified = document.lastModified;
 footer.innerHTML = `&copy; ${currentYear} | Last Modified: ${lastModified}`;
+
+// Add this line to get the windchill element
+const windChillElement = document.getElementById('windchill'); 
