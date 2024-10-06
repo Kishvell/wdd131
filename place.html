@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Page</title>
+    <link rel="stylesheet" href="styles/style.css"> 
+</head>
+<body>
+    <header>
+        <h1>Welcome to Argentina!</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <picture>
+                <source media="(min-width: 768px)" srcset="images/hero-large.jpg">
+                <img src="images/hero-medium.jpg" alt="Hero Image">
+            </picture>
+        </section>
+
+        <section class="content">
+            <h2>Argentina - A Destination to Explore</h2>
+            <p>Discover the vibrant culture, breathtaking landscapes, and delicious cuisine of Argentina. Accompanny us trough the different animals we will discover.</p>
+            <p>Experience the Flora and Fauna of Argentina</p>
+        </section>
+
+        <section class="gallery">
+            <h2>Explore the Gallery</h2>
+            <div class="gallery-grid">
+                <img src="images/hero-image.jpg" alt="Gallery Image 1">
+                <img src="images/img1.jpg" alt="Gallery Image 2">
+                <img src="images/img2.jpg" alt="Gallery Image 3">
+                <img src="images/img3.jpg" alt="Gallery Image 4">
+            </div>
+        </section>
+
+        <section class="contact">
+            <h2>Get in Touch</h2>
+            <p>Have questions about your trip to Argentina? We're here to help! Contact us with any inquiries you may have.</p>
+            <form action="#">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Argentina</p>
+    </footer>
+
+    <script src="scripts/script.js" defer></script>
+</body>
+</html> 
+
