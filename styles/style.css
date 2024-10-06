@@ -81,7 +81,7 @@ p {
 
 .gallery img {
     width: 100%;
-    height: auto;
+    height: 290px;
     object-fit: cover; /* Ensure all gallery images cover their containers */
 }
 
