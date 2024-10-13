@@ -4,71 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temple Album</title>
-    <meta name="description" content="WDD 131 - Dynamic Web Fundamentals, Santiago Benjamín Irigoyen, Temple Album" />
-    <meta name="author" content="Santiago Benjamín Irigoyen" />
     <link rel="stylesheet" href="styles/temples.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="scripts/temples.js" defer></script>
 </head>
 <body>
     <header>
         <h1>Temple Album</h1>
-        <button class="hamburger" aria-expanded="false">&#9776;</button>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="images/salt lake city temple.jpg">Old</a></li>
-                <li><a href="images/brasil.jpg">New</a></li>
-                <li><a href="images/salt lake city temple.jpg">Large</a></li>
-                <li><a href="images/Halifax Nova Scotia Temple.jpg">Small</a></li>
+                <li><a href="home" id="home-link">Home</a></li>
+                <li><a href="old" id="old-link">Old</a></li>
+                <li><a href="new" id="new-link">New</a></li>
+                <li><a href="large" id="large-link">Large</a></li>
+                <li><a href="small" id="small-link">Small</a></li>
             </ul>
         </nav>
     </header>
-    <h2 id="home-title">Home</h2>
-    <main>
-        <figure>
-            <img src="images/BsAs.jpeg" alt="Buenos Aires Argentina Temple">
-            <figcaption>Buenos Aires Argentina Temple</figcaption>
-        </figure>
-        <figure>
-            <img src="images/paraguay.jpg" alt="Asuncion Paraguay Temple">
-            <figcaption>Asuncion Paraguay Temple</figcaption>
-        </figure>
-        <figure>
-            <img src="images/brasil.jpg" alt="Sao Paulo Brazil Temple">
-            <figcaption>Sao Paulo Brazil Temple</figcaption>
-        </figure>
-        <figure>
-            <img src="images/utah temple manti.jpg" alt="Manti Utah USA Temple">
-            <figcaption>Manti Utah USA Temple</figcaption>
-        </figure>
-        <figure>
-            <img src="images/Provo utah rock Canyon.jpg" alt="Provo Utah Rock Canyon USA Temple">
-            <figcaption>Provo Utah Rock Canyon USA Temple</figcaption>
-        </figure>
-        <figure>
-            <img src="images/Halifax Nova Scotia Temple.jpg" alt="Halifax Nova Scotia Canada Temple">
-            <figcaption>Halifax Nova Scotia Canada Temple</figcaption>
-        </figure>
-        <figure>
-            <img src="images/regina-saskatchewan-temple-6902-thumb.jpg" alt="Regina Saskatchewan Canada Temple">
-            <figcaption>Regina Saskatchewan Canada Temple</figcaption>
-        </figure>
-        <figure>
-            <img src="images/st.-paul-minnesota-temple-14544-main.jpg" alt="St. Paul Minnesota USA Temple">
-            <figcaption>St. Paul Minnesota USA Temple</figcaption>
-        </figure>
-        <figure>
-            <img src="images/salt lake city temple.jpg" alt="Salt Lake Utah USA Temple">
-            <figcaption>Salt Lake Utah USA Temple</figcaption>
-        </figure>
-    </main> 
+    <main id="temple-gallery">
+    </main>
     <footer>
         <p>Copyright &copy; <span class="copyright-year"></span> Kishvell. All rights reserved.</p>
         <p>This page was built by <a href="https://kishvell.github.io/wdd131/">Santiago Benjamín Irigoyen</a></p>
     </footer>
-    <script src="script.js"></script>
 </body>
-</html>
+</html> 
