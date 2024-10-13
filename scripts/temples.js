@@ -151,4 +151,9 @@ const footer = document.querySelector('footer');
 const currentYear = new Date().getFullYear();
 const lastModified = document.lastModified;
 const copyrightYearElement = document.querySelector('.copyright-year');
+const lastModifiedElement = document.querySelector('.last-modified');
+const studentNameElement = document.querySelector('.student-name');
+
 copyrightYearElement.textContent = currentYear;
+lastModifiedElement.textContent = lastModified;
+studentNameElement.textContent = "Santiago Benjamín Irigoyen";
