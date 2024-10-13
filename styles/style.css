@@ -1,19 +1,16 @@
-/* style.css */
-
-/* Global Variables */
 :root {
-    --primary-color: #FF5733; /* Example: Red - Adjust for your place */
-    --secondary-color: #FFFFFF; /* Example: White */
-    --accent-color: #007bff; /* Example: Blue - Adjust for your place */
-    --font-family: 'Roboto', sans-serif; /* Use Roboto font */
+    --primary-color: #FF5733;
+    --secondary-color: #FFFFFF;
+    --accent-color: #007bff;
+    --font-family: 'Roboto', sans-serif;
 }
 
-/* General Styles */
 body {
     font-family: var(--font-family);
     margin: 0;
     padding: 0;
     background-color: var(--secondary-color);
+    color: #111; /* Ensure good contrast for text */
 }
 
 header {
@@ -59,14 +56,14 @@ p {
 .hero {
     position: relative;
     overflow: hidden;
-    height: 400px; /* Fixed height for the hero image */
+    height: 400px;
 }
 
 .hero img {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: cover; /* Ensure image covers the entire container */
+    object-fit: cover;
 }
 
 .content {
@@ -75,30 +72,30 @@ p {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust minmax value as needed */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
 }
 
-.gallery-grid > div { /* Target the direct children of the grid */
-    min-height: 200px; /* Set a minimum height for the grid items */
+.gallery-grid > div {
+    min-height: 200px;
     background-size: cover;
     background-position: center;
 }
 
-.gallery-grid > div:nth-child(1) { /* Style the first image */
-    background-image: url("images/hero-image.webp");
+.gallery-grid > div:nth-child(1) {
+    background-image: url("images/hero-image.jpg");
 }
 
-.gallery-grid > div:nth-child(2) { /* Style the second image */
-    background-image: url("images/img1.webp");
+.gallery-grid > div:nth-child(2) {
+    background-image: url("images/img1.jpg");
 }
 
-.gallery-grid > div:nth-child(3) { /* Style the third image */
-    background-image: url("images/img2.webp");
+.gallery-grid > div:nth-child(3) {
+    background-image: url("images/img2.jpg");
 }
 
-.gallery-grid > div:nth-child(4) { /* Style the fourth image */
-    background-image: url("images/img3.webp");
+.gallery-grid > div:nth-child(4) {
+    background-image: url("images/img3.jpg");
 }
 
 .contact form {
@@ -140,14 +137,16 @@ footer {
         height: 400px;
     }
 
-    .gallery-grid {
-        grid-template-columns: repeat(4, 1fr);
+    .gallery-grid > div {
+        min-height: 200px;
+        background-size: cover;
+        background-position: center;
     }
 
     .gallery img {
         width: 100%;
         height: 290px;
-        object-fit: cover; /* Ensure all gallery images cover their containers */
+        object-fit: cover;
     }
 
     .contact form {
@@ -161,7 +160,7 @@ footer {
     }
 
     .weather::after {
-        content: "⛅"; /* Weather Icon */
+        content: "⛅";
         font-size: 2rem;
         color: var(--accent-color);
         position: absolute;
@@ -171,22 +170,30 @@ footer {
     }
 }
 
-/* Mobile View (Smaller Screens) */
 @media (max-width: 767px) {
-    .gallery-grid {
-        grid-template-columns: 1fr; /* One column for smaller screens */
+    .gallery-grid > div {
+        min-height: 150px; 
     }
 
     .contact form {
-        flex-direction: column; /* Stack form elements vertically */
-    }
-
+        flex-direction: column;
+    } 
     .weather {
-        /* Add styles for the weather icon on mobile */
-        /* Use an SVG icon for better scalability */
-        background-image: url("path/to/weather-icon.svg"); /* Replace with your icon path */
+        display: block;
+        background-image: url("images/wheater.jpg");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
+        padding: 20px;
+        border: 1px solid black;
+      }
+
+    .weather-icon {
+        width: 3rem;
+        height: 3rem;
+        margin: 1rem auto;
     }
-} 
+}
+
+
+  

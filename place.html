@@ -13,7 +13,7 @@
         <h1>Welcome to Argentina!</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Gallery</a></li>
                 <li><a href="#">Contact</a></li>
@@ -38,10 +38,10 @@
         <section class="gallery">
             <h2>Explore the Gallery</h2>
             <div class="gallery-grid">
-                <img src="images/hero-image.jpg" alt="Gallery Image 1">
-                <img src="images/img1.jpg" alt="Gallery Image 2">
-                <img src="images/img2.jpg" alt="Gallery Image 3">
-                <img src="images/img3.jpg" alt="Gallery Image 4">
+                <div style="background-image: url('images/hero-image.jpg');"></div>
+                <div style="background-image: url('images/img1.jpg');"></div>
+                <div style="background-image: url('images/img2.jpg');"></div>
+                <div style="background-image: url('images/img3.jpg');"></div>
             </div>
         </section>
 
@@ -60,14 +60,23 @@
 
                 <button type="submit">Send</button>
             </form>
+        </section> 
+        <section class="weather">
+            <p>The current temperature in Buenos Aires is <span id="temperature">17.8</span> °C and the wind speed is <span id="windSpeed">3.7</span> km/h. The windchill is: <span id="windchill"></span></p>
+            <svg id="weather-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="weather-icon">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" fill="#007bff"></path>
+            </svg>
         </section>
-    </main>
 
+    </main> 
     <footer>
-        <p>&copy; 2024 Argentina</p>
+        <p>Copyright &copy; <span class="copyright-year"></span> Kishvell. All rights reserved. Argentina 2024</p>
+        <p>This page was built by <a href="https://kishvell.github.io/wdd131/">Santiago Benjamín Irigoyen</a></p>
     </footer>
 
     <script src="scripts/script.js" defer></script>
 </body>
 </html>
+
+
 
