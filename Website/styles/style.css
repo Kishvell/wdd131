@@ -1,0 +1,32 @@
+body {
+    font-family: 'Arial', sans-serif; /* Using Arial for body text */
+    margin: 20px;
+    background-color: #f2f2f2; /* Light gray background */
+}
+
+
+h1, h2, h3 {
+    color: #333; /* Dark gray headings */
+    font-family: 'Arial', sans-serif; /* Using Arial for headings */
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+p {
+    color: #555; /* Slightly darker gray for body text */
+    font-family: 'Arial', sans-serif; /* Using Arial for body text */
+}
+
+.highlight {
+    color: #007bff; /* Blue highlight color */
+}
+
+.accent {
+    background-color: #007bff; /* Blue accent color */
+    color: #fff; /* White text on blue background */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
