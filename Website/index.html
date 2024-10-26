@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiztastic - Test Your Knowledge</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/Website/styles/styles.css">
 </head>
 <body>
     <header>
@@ -13,25 +13,33 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="quiz-categories.html">Quiz Categories</a></li>
-                <li><a href="user-profile.html">User Profile</a></li>
-                <li><a href="quiz-creation.html">Create a Quiz</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-            </ul>
+                <li><a href="quiz-creator.html">Quiz Creator</a></li> </ul>
         </nav>
     </header>
     <main>
         <section id="featured-quizzes">
             <h2>Featured Quizzes</h2>
-            <!-- Dynamically load featured quizzes here -->
+            <div class="quiz-item">
+                <img src="images/GKQ.jpg" alt="General Knowledge Quiz" loading="lazy" class="quiz-image">
+                <a href="/Website/GeneralQuiz.html" class="quiz-link">General Knowledge</a>
+            </div>
+            <div class="quiz-item">
+                <img src="images/HQ.jpg" alt="History Quiz" loading="lazy" class="quiz-image">
+                <a href="/Website/HistoryQuiz.html" class="quiz-link">History</a>
+            </div>
+            <div class="quiz-item">
+                <img src="images/SQ.jpg" alt="Science Quiz" loading="lazy" class="quiz-image">
+                <a href="/Website/ScienceQuiz.html" class="quiz-link">Science</a>
+            </div>
         </section>
         <section id="quiz-categories">
-            <h2>Explore Our Categories</h2>
-            <!-- Dynamically load quiz categories here -->
+            <h2>Explore Your Quizzes</h2>
+            <!-- Dynamically load quiz created here -->
         </section>
     </main>
     <footer>
         <p>&copy; 2023 Quiztastic</p>
     </footer>
-    <script src="js/script.js"></script>
+    <script src="/Website/scripts/script.js"></script>
 </body>
 </html>

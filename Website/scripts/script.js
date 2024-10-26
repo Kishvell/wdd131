@@ -1,33 +1,36 @@
-// Example: Dynamically loading featured quizzes
-const featuredQuizzesContainer = document.getElementById("featured-quizzes");
-const featuredQuizzes = [
-    { title: "General Knowledge", image: "images/GKQ.jpg" },
-    { title: "History", image: "images/HQ.jpg" },
-];
+// Array to store quiz data
+const quizzes = [];
 
-featuredQuizzes.forEach(quiz => {
+// Function to add a new quiz
+function addQuiz(question, choices, correctAnswer) {
+  const newQuiz = {
+    question: question,
+    choices: choices,
+    correctAnswer: correctAnswer,
+  };
+  quizzes.push(newQuiz);
+}
+
+// Function to display quizzes
+function displayQuizzes() {
+  const quizContainer = document.getElementById("quiz-container");
+  quizContainer.innerHTML = ""; // Clear previous quizzes
+
+  quizzes.forEach((quiz, index) => {
     const quizElement = document.createElement("div");
     quizElement.innerHTML = `
-        <h3>${quiz.title}</h3>
-        <img src="${quiz.image}" alt="${quiz.title} Quiz" loading="lazy">
-        <a href="quiz.html?quizId=${quiz.id}">Take the Quiz</a>
+      <h3>Question ${index + 1}: ${quiz.question}</h3>
+      <ul>
+        ${quiz.choices.map((choice, i) => `<li>${choice}</li>`).join("")}
+      </ul>
+      <p>Correct Answer: ${quiz.correctAnswer}</p>
     `;
-    featuredQuizzesContainer.appendChild(quizElement);
-});
+    quizContainer.appendChild(quizElement);
+  });
+}
 
-// Example: Loading quiz categories
-const quizCategoriesContainer = document.getElementById("quiz-categories");
-const quizCategories = [
-    "General Knowledge",
-    "History",
-    "Science",
-];
+// Example: Adding a quiz
+addQuiz("What is the capital of France?", ["London", "Paris", "Berlin"], "Paris");
 
-quizCategories.forEach(category => {
-    const categoryElement = document.createElement("div");
-    categoryElement.innerHTML = `
-        <h3>${category}</h3>
-        <a href="quiz-categories.html?category=${category}">Explore Quizzes</a>
-    `;
-    quizCategoriesContainer.appendChild(categoryElement);
-});
+// Displaying the quizzes
+displayQuizzes();

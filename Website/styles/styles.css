@@ -54,6 +54,41 @@ h2 {
     margin-bottom: 10px;
 }
 
+/* Featured Quizzes Styles */
+.quiz-item {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    width: 200px; /* Adjust width as needed */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-image {
+    /* Make the images square */
+    width: 150px; 
+    height: 150px; 
+    object-fit: cover; /* Ensure image fills the space */
+    border-radius: 5px;
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+.quiz-link {
+    display: block;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.quiz-link:hover {
+    background-color: #333;
+}
+
 /* Responsive Design (Example: Media Query for Mobile) */
 @media (max-width: 768px) {
     nav ul {
@@ -63,5 +98,10 @@ h2 {
     nav li {
         display: block;
         margin-bottom: 10px;
+    }
+
+    .quiz-item {
+        display: block;
+        margin-bottom: 20px;
     }
 }

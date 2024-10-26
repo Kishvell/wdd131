@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz Creator</title>
+  <link rel="stylesheet" href="/Website/styles/quiz-creator.css">
+</head>
+<body>
+  <h1>Create a Quiz</h1>
+  <form id="quiz-form">
+    <label for="quiz-title">Quiz Title:</label>
+    <input type="text" id="quiz-title" name="quiz-title" required>
+
+    <label for="category">Category:</label>
+    <select id="category" name="category">
+      <option value="General Knowledge">General Knowledge</option>
+      <option value="History">History</option>
+      <option value="Science">Science</option>
+      </select>
+
+    <div id="questions-container">
+      <!-- Questions will be added here dynamically -->
+    </div>
+
+    <button type="button" id="add-question">Add Question</button>
+    <button type="submit">Create Quiz</button>
+  </form>
+
+  <script src="/Website/scripts/quiz-creator.js"></script>
+</body>
+</html>
