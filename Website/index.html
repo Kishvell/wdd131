@@ -3,49 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App</title>
-    <link rel="stylesheet" href="/Website/stylesWeb/styles.css">
+    <title>Quiztastic</title>
+    <link rel="stylesheet" href="stylesWeb/styles.css">
 </head>
 <body>
     <header>
-        <h1>Quiz App</h1>
+        <h1>Quiztastic</h1>
+        <p>Create and take quizzes!</p>
     </header>
 
     <main>
         <section id="featured-quizzes">
             <h2>Featured Quizzes</h2>
-            <div class="quiz-container">
-                <!-- Quizzes will be displayed here -->
+            <div class="quiz-list">
+                <!-- Featured quizzes will be added here dynamically -->
             </div>
         </section>
 
-        <section id="created-quizzes">
-            <h2>Created Quizzes</h2>
-            <div class="quiz-container">
-                <!-- Quizzes will be displayed here -->
+        <section id="quiz-library">
+            <h2>Your Quiz Library</h2>
+            <div class="quiz-list">
+                <!-- Created quizzes will be added here dynamically -->
             </div>
         </section>
 
         <section id="quiz-creator">
             <h2>Create Your Own Quiz</h2>
             <form id="quiz-form">
-                <label for="quiz-category">Category:</label>
-                <input type="text" id="quiz-category" name="quiz-category" required>
-
-                <div id="questions-container">
-                    <!-- Questions will be added here -->
+                <div>
+                    <label for="quiz-title">Quiz Title:</label>
+                    <input type="text" id="quiz-title" name="quiz-title" required>
                 </div>
-
-                <button type="button" id="add-question-button">Add Question</button>
+                <div>
+                    <label for="quiz-category">Category:</label>
+                    <select id="quiz-category" name="quiz-category">
+                        <option value="History">History</option>
+                        <option value="Science">Science</option>
+                        <option value="Movies">Movies</option>
+                        <!-- Add more categories as needed -->
+                    </select>
+                </div>
+                <div id="questions-container">
+                    <!-- Question fields will be added here dynamically -->
+                </div>
+                <button type="button" id="add-question">Add Question</button>
                 <button type="submit">Create Quiz</button>
             </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 Quiz App</p>
+        <p>&copy; 2023 Quiztastic</p>
     </footer>
 
-    <script src="/Website/scriptWeb/script.js"></script>
+    <script src="scriptWeb/script.js"></script>
 </body>
 </html>
+

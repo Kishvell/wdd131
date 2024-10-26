@@ -1,244 +1,215 @@
-// HTML Elements
-const featuredQuizzesContainer = document.querySelector("#featured-quizzes .quiz-container");
-const createdQuizzesContainer = document.querySelector("#created-quizzes .quiz-container");
-const quizForm = document.querySelector('#quiz-form');
-const quizCategory = document.querySelector('#quiz-category');
-const questionsContainer = document.querySelector('#questions-container');
-const addQuestionButton = document.querySelector('#add-question-button');
-const questionInput = document.getElementById('question-input');
-const answerOptions = document.querySelectorAll('.answer-option');
+const featuredQuizzes = document.getElementById('featured-quizzes').querySelector('.quiz-list');
+const quizLibrary = document.getElementById('quiz-library').querySelector('.quiz-list');
+const quizForm = document.getElementById('quiz-form');
+const questionsContainer = document.getElementById('questions-container');
+const addQuestionButton = document.getElementById('add-question');
 
-// Variables
-let quizData = []; // Array to store quiz data
+let quizzes = []; // Array to store created quizzes
 
-// Load quiz data from local storage on page load
-window.addEventListener('load', () => {
-  const storedQuizData = localStorage.getItem('quizData');
-  if (storedQuizData) {
-    quizData = JSON.parse(storedQuizData);
-  } else {
-    // Initialize with default quizzes if no data is found
-    quizData = [
-        {
-            category: "History",
-            questions: [
-                {
-                    question: "In what year did World War II begin?",
-                    options: ["1914", "1939", "1941", "1945"],
-                    correctAnswer: 1
-                },
-                {
-                    question: "Who was the first president of the United States?",
-                    options: ["Thomas Jefferson", "George Washington", "Abraham Lincoln", "John Adams"],
-                    correctAnswer: 1
-                },
-                {
-                    question: "Where was the ancient city of Pompeii located?",
-                    options: ["Greece", "Egypt", "Italy", "Rome"],
-                    correctAnswer: 2
-                }
-            ]
-        },
-        {
-            category: "Science",
-            questions: [
-                {
-                    question: "What is the chemical symbol for gold?",
-                    options: ["Ag", "Au", "Fe", "Hg"],
-                    correctAnswer: 1
-                },
-                {
-                    question: "What is the largest planet in our solar system?",
-                    options: ["Mars", "Jupiter", "Saturn", "Neptune"],
-                    correctAnswer: 1
-                },
-                {
-                    question: "What is the smallest unit of matter?",
-                    options: ["Atom", "Molecule", "Cell", "Organelle"],
-                    correctAnswer: 0
-                }
-            ]
-        },
-        {
-            category: "Pop Culture",
-            questions: [
-                {
-                    question: "Who wrote the Harry Potter series?",
-                    options: ["J.K. Rowling", "Stephen King", "Suzanne Collins", "Rick Riordan"],
-                    correctAnswer: 0
-                },
-                {
-                    question: "What is the name of the main character in the TV show 'Friends'?",
-                    options: ["Rachel", "Monica", "Phoebe", "Joey"],
-                    correctAnswer: 0
-                },
-                {
-                    question: "What is the name of the famous video game character who is a plumber?",
-                    options: ["Sonic", "Mario", "Pac-Man", "Donkey Kong"],
-                    correctAnswer: 1
-                }
-            ]
+// Function to create a quiz card for display
+function createQuizCard(quiz) {
+    const card = document.createElement('div');
+    card.classList.add('quiz-card');
+    card.innerHTML = `
+        <h3>${quiz.title}</h3>
+        <p>Category: ${quiz.category}</p>
+        <button>Take Quiz</button>
+    `;
+    return card;
+} 
+
+// Function to display a quiz (for featured and library quizzes)
+function displayQuiz(quiz) {
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    const quizContainer = document.createElement('div');
+    quizContainer.classList.add('quiz-container');
+
+    const questionElement = document.createElement('h3');
+    const optionsContainer = document.createElement('div');
+    optionsContainer.classList.add('options');
+    const submitButton = document.createElement('button');
+    submitButton.textContent = 'Submit';
+    const resultElement = document.createElement('p');
+
+    function displayQuestion() {
+        const currentQuestion = quiz.questions[currentQuestionIndex];
+        questionElement.textContent = currentQuestion.question;
+        optionsContainer.innerHTML = ''; // Clear previous options
+
+        currentQuestion.options.forEach((option, index) => {
+            const optionLabel = document.createElement('label');
+            const optionInput = document.createElement('input');
+            optionInput.type = 'radio';
+            optionInput.name = 'answer';
+            optionInput.value = option;
+            optionInput.id = `option-${index}`;
+            optionLabel.htmlFor = `option-${index}`;
+            optionLabel.textContent = option;
+            optionsContainer.appendChild(optionInput);
+            optionsContainer.appendChild(optionLabel);
+        });
+
+        resultElement.textContent = ''; // Clear result message
+    }
+
+    function checkAnswer() {
+        const selectedOption = document.querySelector('input[name="answer"]:checked');
+        if (selectedOption) {
+            const userAnswer = selectedOption.value;
+            const correctAnswer = quiz.questions[currentQuestionIndex].answer;
+
+            if (userAnswer === correctAnswer) {
+                score++;
+                resultElement.textContent = 'Correct!';
+            } else {
+                resultElement.textContent = `Incorrect. The correct answer is: ${correctAnswer}`;
+            }
+
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quiz.questions.length) {
+                displayQuestion();
+            } else {
+                resultElement.textContent = `Quiz finished! Your score is: ${score}/${quiz.questions.length}`;
+                submitButton.disabled = true; // Disable submit button
+            }
+        } else {
+            resultElement.textContent = 'Please select an answer.';
         }
-    ];
-  }
-  displayFeaturedQuizzes();
-  displayCreatedQuizzes();
-});
-
-// Function to display featured quizzes
-function displayFeaturedQuizzes() {
-    featuredQuizzesContainer.innerHTML = '';
-
-    quizData.forEach((quiz, index) => {
-        const quizCard = document.createElement("div");
-        quizCard.classList.add("quiz-card");
-        quizCard.innerHTML = `
-            <h3>${quiz.category}</h3>
-            <a href="quiz.html?quizId=${index}" class="start-quiz-button">Start Quiz</a>
-        `;
-        featuredQuizzesContainer.appendChild(quizCard);
-    });
-}
-
-// Function to display created quizzes
-function displayCreatedQuizzes() {
-    createdQuizzesContainer.innerHTML = '';
-
-    quizData.forEach((quiz, index) => {
-        const quizCard = document.createElement("div");
-        quizCard.classList.add("quiz-card");
-        quizCard.innerHTML = `
-            <h3>${quiz.category}</h3>
-            <a href="quiz.html?quizId=${index}" class="start-quiz-button">Start Quiz</a>
-        `;
-        createdQuizzesContainer.appendChild(quizCard);
-    });
-}
-
-// Function to add a new question to the quiz
-function addQuestion() {
-  const question = questionInput.value.trim();
-  const options = [];
-  let correctAnswer = null;
-
-  // Get answer options and identify the correct answer
-  answerOptions.forEach((option, index) => {
-    const optionValue = option.value.trim();
-    if (optionValue) {
-      options.push(optionValue);
-      if (option.checked) {
-        correctAnswer = index;
-      }
     }
-  });
 
-  // Validate input
-  if (!question || options.length < 2 || correctAnswer === null) {
-    alert('Please fill in all fields and select the correct answer.');
-    return;
-  }
+    // Initial setup
+    quizContainer.appendChild(questionElement);
+    quizContainer.appendChild(optionsContainer);
+    quizContainer.appendChild(submitButton);
+    quizContainer.appendChild(resultElement);
+    displayQuestion();
 
-  // Add the new question to the quiz data
-  quizData[quizData.length - 1].questions.push({
-    question: question,
-    options: options,
-    correctAnswer: correctAnswer
-  });
+    submitButton.addEventListener('click', checkAnswer);
+    return quizContainer;
+} 
 
-  // Clear input fields and update the UI
-  questionInput.value = '';
-  answerOptions.forEach(option => {
-    option.value = '';
-    option.checked = false;
-  });
-
-  // Display a success message or update the UI to show the new question
-  alert('Question added successfully!');
+// Function to add a new question field
+function addQuestionField() {
+    const questionDiv = document.createElement('div');
+    questionDiv.classList.add('question-field');
+    questionDiv.innerHTML = `
+        <label for="question-${quizzes.length}">Question:</label>
+        <input type="text" id="question-${quizzes.length}" name="question-${quizzes.length}" required>
+        <label for="answer-${quizzes.length}">Answer:</label>
+        <select id="answer-${quizzes.length}" name="answer-${quizzes.length}" required>
+            <option value="">Select Correct Answer</option>
+            <option value="option-1-${quizzes.length}">Option 1</option>
+            <option value="option-2-${quizzes.length}">Option 2</option>
+            <option value="option-3-${quizzes.length}">Option 3</option>
+        </select>
+        <p><p/>
+        <label for="option-1-${quizzes.length}">Option 1:</label>
+        <input type="text" id="option-1-${quizzes.length}" name="option-1-${quizzes.length}" required>
+        <label for="option-2-${quizzes.length}">Option 2:</label>
+        <input type="text" id="option-2-${quizzes.length}" name="option-2-${quizzes.length}" required>
+        <label for="option-3-${quizzes.length}">Option 3:</label>
+        <input type="text" id="option-3-${quizzes.length}" name="option-3-${quizzes.length}" required>
+    `;
+    questionsContainer.appendChild(questionDiv);
 }
 
-// Event listeners
-addQuestionButton.addEventListener('click', addQuestion);
+// Event listener for adding a new question
+addQuestionButton.addEventListener('click', addQuestionField);
 
-// Submit quiz form
+// Event listener for creating a new quiz
 quizForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const newQuiz = {
-    category: quizCategory.value,
-    questions: []
-  };
+    event.preventDefault(); // Prevent form from submitting normally
 
-  // Add questions to the new quiz
-  quizData.forEach(question => {
-    newQuiz.questions.push(question);
-  });
+    // Get quiz data from form
+    const title = document.getElementById('quiz-title').value;
+    const category = document.getElementById('quiz-category').value;
+    const questions = [];
 
-  // Clear the quiz data array
-  quizData = [];
+    // Get questions, answers, and options from form
+    const questionFields = document.querySelectorAll('.question-field');
+    questionFields.forEach(field => {
+        const question = field.querySelector('#question-' + quizzes.length).value;
+        const answer = field.querySelector('#answer-' + quizzes.length).value;
+        const option1 = field.querySelector('#option-1-' + quizzes.length).value;
+        const option2 = field.querySelector('#option-2-' + quizzes.length).value;
+        const option3 = field.querySelector('#option-3-' + quizzes.length).value;
 
-  // Add the new quiz to the quizData array
-  quizData.push(newQuiz);
+        questions.push({
+            question: question,
+            answer: answer,
+            options: [option1, option2, option3]
+        });
+    });
 
-  // Store the updated quiz data in local storage
-  localStorage.setItem('quizData', JSON.stringify(quizData));
+    // Create new quiz object
+    const newQuiz = { title, category, questions };
 
-  // Redirect to the homepage or display a success message
-  alert('Quiz created successfully!');
-  displayFeaturedQuizzes();
-  displayCreatedQuizzes();
+    // Add quiz to the quizzes array
+    quizzes.push(newQuiz);
+
+    // Add quiz card to the library (with quiz taking functionality)
+    const quizCard = createQuizCard(newQuiz);
+    quizCard.querySelector('button').addEventListener('click', () => {
+        const quizContainer = displayQuiz(newQuiz);
+        quizLibrary.appendChild(quizContainer); // Add the quiz container to the library section
+    });
+    quizLibrary.appendChild(quizCard);
+
+    // Clear the quiz form
+    quizForm.reset();
+
+    // Add a new question field (optional)
+    addQuestionField();
+
+    // Save quizzes to local storage (optional)
+    // localStorage.setItem('quizzes', JSON.stringify(quizzes));
 });
 
-// Function to load a quiz
-function loadQuiz(quiz) {
-    currentQuestionIndex = 0;
-    score = 0;
-    questionText.textContent = quiz.questions[currentQuestionIndex].question;
-    displayAnswerOptions(quiz.questions[currentQuestionIndex].options);
-    quizArea.classList.remove("hidden");
-}
+// Example featured quizzes (you can add more)
+const featuredQuizzesData = [
+    { title: "History Quiz", category: "History", questions: [
+        { question: "In what year did World War II begin?", answer: "1939", options: ["1939", "1941", "1945", "1914"] },
+        { question: "Who was the first president of the United States?", answer: "George Washington", options: ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"] },
+        { question: "What is the capital of France?", answer: "Paris", options: ["Paris", "Berlin", "Rome", "Madrid"] }
+    ] },
+    { title: "Science Quiz", category: "Science", questions: [
+        { question: "What is the chemical symbol for water?", answer: "H2O", options: ["H2O", "CO2", "O2", "N2"] },
+        { question: "What is the largest planet in our solar system?", answer: "Jupiter", options: ["Jupiter", "Saturn", "Mars", "Venus"] },
+        { question: "What is the name of the process by which plants make food?", answer: "Photosynthesis", options: ["Photosynthesis", "Respiration", "Fermentation", "Transpiration"] }
+    ] },
+    { title: "Movie Trivia", category: "Movies", questions: [
+        { question: "What is the name of the fictional city in the Batman movies?", answer: "Gotham City", options: ["Gotham City", "Metropolis", "Central City", "Star City"] },
+        { question: "Who played the role of Harry Potter in the movies?", answer: "Daniel Radcliffe", options: ["Daniel Radcliffe", "Rupert Grint", "Emma Watson", "Tom Felton"] },
+        { question: "What is the name of the iconic spaceship in Star Wars?", answer: "Millennium Falcon", options: ["Millennium Falcon", "Death Star", "X-Wing", "TIE Fighter"] }
+    ] }
+];
 
-// Function to display answer options
-function displayAnswerOptions(options) {
-    answerOptionsElement.innerHTML = "";
-    options.forEach(option => {
-        const button = document.createElement("button");
-        button.classList.add("answer-button");
-        button.textContent = option;
-        button.onclick = () => checkAnswer(option);
-        answerOptionsElement.appendChild(button);
+// Display featured quizzes
+featuredQuizzesData.forEach(quiz => {
+    const card = createQuizCard(quiz);
+    card.querySelector('button').addEventListener('click', () => {
+        const quizContainer = displayQuiz(quiz);
+        featuredQuizzes.appendChild(quizContainer); // Add the quiz container to the featured section
     });
-}
+    featuredQuizzes.appendChild(card);
+});
 
-// Function to check the answer
-function checkAnswer(selectedAnswer) {
-    const currentQuestion = quizData[quizId].questions[currentQuestionIndex];
-    if (selectedAnswer === currentQuestion.options[currentQuestion.correctAnswer]) {
-        score++;
-        result.textContent = "Correct!";
-    } else {
-        result.textContent = "Incorrect. The correct answer is " + currentQuestion.options[currentQuestion.correctAnswer];
-    }
-    result.classList.remove("hidden");
-    nextQuestionButton.classList.remove("hidden");
-}
+// Add an initial question field
+addQuestionField();
 
-// Function to move to the next question
-function nextQuestion() {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < quizData[quizId].questions.length) {
-        questionText.textContent = quizData[quizId].questions[currentQuestionIndex].question;
-        displayAnswerOptions(quizData[quizId].questions[currentQuestionIndex].options);
-        result.classList.add("hidden");
-        nextQuestionButton.classList.add("hidden");
-    } else {
-        endQuiz();
-    }
-}
+// Load quizzes from local storage (optional)
+    const storedQuizzes = localStorage.getItem('quizzes');
+    if (storedQuizzes) {
+     quizzes = JSON.parse(storedQuizzes);
+     quizzes.forEach(quiz => {
+         const quizCard = createQuizCard(quiz);
+         quizCard.querySelector('button').addEventListener('click', () => {
+             const quizContainer = displayQuiz(quiz);
+             quizLibrary.appendChild(quizContainer); // Add the quiz container to the library section
+         });
+         quizLibrary.appendChild(quizCard);
+     });
+ }
 
-// Function to end the quiz
-function endQuiz() {
-    result.textContent = "Quiz finished! Your score is " + score + " out of " + quizData[quizId].questions.length;
-    nextQuestionButton.classList.add("hidden");
-}
-
-// Event Listener for Next Question Button
-nextQuestionButton.addEventListener("click", nextQuestion);
