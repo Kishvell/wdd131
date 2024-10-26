@@ -3,43 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiztastic - Test Your Knowledge</title>
-    <link rel="stylesheet" href="/Website/styles/stylesWeb.css">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="/Website/stylesWeb/styles.css">
 </head>
 <body>
     <header>
-        <h1>Welcome to Quiztastic!</h1>
-        <nav>
-            <ul>
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/Website/quiz.categories.html">Quiz Categories</a></li>
-                <li><a href="/Website/quiz-creator.html">Quiz Creator</a></li> </ul>
-        </nav>
+        <h1>Quiz App</h1>
     </header>
+
     <main>
         <section id="featured-quizzes">
             <h2>Featured Quizzes</h2>
-            <div class="quiz-item">
-                <img src="images/GKQ.jpg" alt="General Knowledge Quiz" loading="lazy" class="quiz-image">
-                <a href="/Website/GeneralQuiz.html" class="quiz-link">General Knowledge</a>
-            </div>
-            <div class="quiz-item">
-                <img src="images/HQ.jpg" alt="History Quiz" loading="lazy" class="quiz-image">
-                <a href="/Website/HistoryQuiz.html" class="quiz-link">History</a>
-            </div>
-            <div class="quiz-item">
-                <img src="images/SQ.jpg" alt="Science Quiz" loading="lazy" class="quiz-image">
-                <a href="/Website/ScienceQuiz.html" class="quiz-link">Science</a>
+            <div class="quiz-container">
+                <!-- Quizzes will be displayed here -->
             </div>
         </section>
-        <section id="quiz-categories">
-            <h2>Explore Your Quizzes</h2>
-            <!-- Dynamically load quiz created here -->
+
+        <section id="created-quizzes">
+            <h2>Created Quizzes</h2>
+            <div class="quiz-container">
+                <!-- Quizzes will be displayed here -->
+            </div>
+        </section>
+
+        <section id="quiz-creator">
+            <h2>Create Your Own Quiz</h2>
+            <form id="quiz-form">
+                <label for="quiz-category">Category:</label>
+                <input type="text" id="quiz-category" name="quiz-category" required>
+
+                <div id="questions-container">
+                    <!-- Questions will be added here -->
+                </div>
+
+                <button type="button" id="add-question-button">Add Question</button>
+                <button type="submit">Create Quiz</button>
+            </form>
         </section>
     </main>
+
     <footer>
-        <p>&copy; 2023 Quiztastic</p>
+        <p>&copy; 2023 Quiz App</p>
     </footer>
-    <script src="/Website/scripts/scriptWeb.js"></script>
+
+    <script src="/Website/scriptWeb/script.js"></script>
 </body>
 </html>
